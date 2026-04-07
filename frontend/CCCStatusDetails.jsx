@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
 
+function extractTicketNumber(url) {
+  if (!url) return "";
+  // Extract last path segment (e.g., WEBOS4TV-70351 from a JIRA URL)
+  const match = url.match(/\/([A-Z][A-Z0-9]+-\d+)\s*$/i) || url.match(/([A-Z][A-Z0-9]+-\d+)\s*$/i);
+  return match ? match[1] : url;
+}
+
 export default function CCCStatusDetails({ onBack }) {
   const [history, setHistory] = useState([]);
   const [statusFilter, setStatusFilter] = useState("all");
@@ -227,7 +234,6 @@ export default function CCCStatusDetails({ onBack }) {
                     <th>Status</th>
                     <th>Ticket Link</th>
                     <th>Started Date</th>
-                    <th>Closed Date</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -255,7 +261,7 @@ export default function CCCStatusDetails({ onBack }) {
                       <td>
                         {item.cccTicketLink ? (
                           <a href={item.cccTicketLink} target="_blank" rel="noopener noreferrer" className="ccc-link">
-                            {item.cccTicketLink}
+                            {extractTicketNumber(item.cccTicketLink)}
                           </a>
                         ) : (
                           "—"
@@ -263,9 +269,6 @@ export default function CCCStatusDetails({ onBack }) {
                       </td>
                       <td className="ccc-cell-date">
                         {item.cccStartedDate ? new Date(item.cccStartedDate).toLocaleString() : "—"}
-                      </td>
-                      <td className="ccc-cell-date">
-                        {item.closedDate ? new Date(item.closedDate).toLocaleString() : "—"}
                       </td>
                       <td>
                         {item.status === "open" ? (

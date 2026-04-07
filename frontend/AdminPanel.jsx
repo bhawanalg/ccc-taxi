@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 
+function extractTicketNumber(url) {
+  if (!url) return "";
+  const match = url.match(/\/([A-Z][A-Z0-9]+-\d+)\s*$/i) || url.match(/([A-Z][A-Z0-9]+-\d+)\s*$/i);
+  return match ? match[1] : url;
+}
+
 const branchColors = {
   webos4media: { badge: "#254336", text: "#eff8f1" },
   que4media: { badge: "#3b2454", text: "#f0ecf8" },
@@ -311,7 +317,7 @@ export default function AdminPanel({ branchOptions, onBack, onLogout }) {
       {/* Top bar */}
       <header className="ap-topbar">
         <div className="ap-brand">
-          <p className="eyebrow" style={{ margin: 0 }}>CCC taxi release composer</p>
+          <p className="eyebrow" style={{ margin: 0 }}>CCC taxi : MS System App Solution</p>
           <h1 className="ap-title">Admin Panel</h1>
         </div>
         <div style={{ display: 'flex', gap: '10px' }}>
@@ -460,7 +466,13 @@ export default function AdminPanel({ branchOptions, onBack, onLogout }) {
                       onClick={() => toggleTicketGroup(ticket)}
                     >
                       <div>
-                        <strong>{ticket}</strong>
+                        <strong>
+                          {ticket !== 'No ticket' ? (
+                            <a href={ticket} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+                              {extractTicketNumber(ticket)}
+                            </a>
+                          ) : ticket}
+                        </strong>
                         <span style={{ marginLeft: '10px', fontWeight: 400 }}>({group.length} item(s))</span>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -572,7 +584,11 @@ export default function AdminPanel({ branchOptions, onBack, onLogout }) {
                             </button>
                           ) : activeStatus === 'cccstarted' ? (
                             <span className="ap-status-indicator ap-status-ticket">
-                              Ticket: {item.cccTicketLink}
+                              Ticket: {item.cccTicketLink ? (
+                                <a href={item.cccTicketLink} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+                                  {extractTicketNumber(item.cccTicketLink)}
+                                </a>
+                              ) : '—'}
                             </span>
                           ) : (
                             <span className="ap-status-indicator ap-status-closed">
