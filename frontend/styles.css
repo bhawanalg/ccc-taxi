@@ -1386,3 +1386,47 @@ select {
   min-width: 200px;
   text-align: center;
 }
+
+/* ── Spinner animation ──────────────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Focus ring improvement ─────────────────────────────────── */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(184, 92, 56, 0.45) !important;
+  box-shadow: 0 0 0 3px rgba(184, 92, 56, 0.1) !important;
+}
+
+/* ── Smooth scrollbar for dropdowns ─────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(125, 78, 36, 0.2);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(125, 78, 36, 0.35);
+}
+
+/* ── Button disabled state ──────────────────────────────────── */
+.primary-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ── Ghost button hover ─────────────────────────────────────── */
+.ghost-button:hover {
+  background: rgba(47, 36, 28, 0.1);
+}

@@ -34,7 +34,7 @@ export default function CCCStatusDetails({ onBack }) {
       <main className="ccc-status-shell">
         <header className="ccc-status-header">
           <div>
-            <p className="eyebrow" style={{ margin: 0 }}>CCC taxi Release Composer</p>
+            <p className="eyebrow" style={{ margin: 0 }}>CCC taxi : MS System App Solution</p>
             <h1>Status Overview</h1>
           </div>
           <button className="primary-button" type="button" onClick={onBack}>
@@ -138,7 +138,7 @@ export default function CCCStatusDetails({ onBack }) {
       {/* Header */}
       <header className="ccc-status-header">
         <div>
-          <p className="eyebrow" style={{ margin: 0 }}>CCC taxi Release Composer</p>
+          <p className="eyebrow" style={{ margin: 0 }}>CCC taxi : MS System App Solution</p>
           <h1>Status Overview</h1>
         </div>
         <button className="primary-button" type="button" onClick={onBack}>

@@ -117,7 +117,7 @@ ccc-complete/
 
 The admin dashboard uses basic authentication:
 - **Default Username**: admin
-- **Default Password**: *****
+- **Default Password**: admin
 
 *Note: This is for development purposes. Update credentials for production use.*
 
