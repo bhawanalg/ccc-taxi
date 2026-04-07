@@ -127,7 +127,7 @@ export default function App() {
   // useEffect must be called before any conditional returns
   useEffect(() => {
     const loadLatestState = () => {
-      fetch("http://localhost:5000/api/ccc")
+      fetch("http://localhost:5001/api/ccc")
         .then((res) => res.json())
         .then((data) => {
           if (data && data.length > 0) {
@@ -252,7 +252,7 @@ export default function App() {
     setFormError("");
 
     // Fetch latest data from backend to ensure all entries (including admin state changes) are preserved
-    fetch("http://localhost:5000/api/ccc")
+    fetch("http://localhost:5001/api/ccc")
       .then((res) => res.json())
       .then((historyData) => {
         // Get the latest record's entries
@@ -282,7 +282,7 @@ export default function App() {
         setBranchEntries(newBranchEntries);
 
         // Save to backend
-        fetch("http://localhost:5000/api/ccc", {
+        fetch("http://localhost:5001/api/ccc", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ branchEntries: newBranchEntries, branchMeta }),
@@ -310,7 +310,7 @@ export default function App() {
     setBranchEntries(newBranchEntries);
 
     // Save to backend
-    fetch("http://localhost:5000/api/ccc", {
+    fetch("http://localhost:5001/api/ccc", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ branchEntries: newBranchEntries, branchMeta }),
@@ -340,7 +340,7 @@ export default function App() {
     setBranchMeta(updatedMeta);
 
     // Save immediately to backend
-    fetch("http://localhost:5000/api/ccc", {
+    fetch("http://localhost:5001/api/ccc", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ branchEntries, branchMeta: updatedMeta }),
@@ -366,7 +366,7 @@ export default function App() {
     }
 
     // Fetch suggestions from backend
-    fetch(`http://localhost:5000/api/applications/search?q=${encodeURIComponent(value)}`)
+    fetch(`http://localhost:5001/api/applications/search?q=${encodeURIComponent(value)}`)
       .then((res) => res.json())
       .then((data) => {
         setAppSuggestions(data || []);
@@ -417,7 +417,7 @@ export default function App() {
     }
     setWallLoggingIn(true);
     setWallLoginError("");
-    fetch("http://localhost:5000/api/wall-login", {
+    fetch("http://localhost:5001/api/wall-login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: wallUsername, password: wallPassword }),
@@ -461,7 +461,7 @@ export default function App() {
     setWallFetchError("");
     setWallApiResponse(null);
 
-    fetch("http://localhost:5000/api/wall-fetch", {
+    fetch("http://localhost:5001/api/wall-fetch", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ appName, tag, username: wallUsername, password: wallPassword }),

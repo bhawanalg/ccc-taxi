@@ -178,7 +178,7 @@ export default function AdminPanel({ branchOptions, onBack, onLogout }) {
   };
 
   const saveToBackend = (updatedBranchEntries) => {
-    fetch("http://localhost:5000/api/ccc", {
+    fetch("http://localhost:5001/api/ccc", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ branchEntries: updatedBranchEntries, branchMeta }),
@@ -276,7 +276,7 @@ export default function AdminPanel({ branchOptions, onBack, onLogout }) {
   };
 
   const reloadHistory = () => {
-    fetch("http://localhost:5000/api/ccc")
+    fetch("http://localhost:5001/api/ccc")
       .then((res) => res.json())
       .then((data) => {
         setHistory(data);
@@ -294,7 +294,7 @@ export default function AdminPanel({ branchOptions, onBack, onLogout }) {
 
   const deleteRecord = (recordId) => {
     if (!recordId) return;
-    fetch(`http://localhost:5000/api/ccc/${recordId}`, { method: "DELETE" })
+    fetch(`http://localhost:5001/api/ccc/${recordId}`, { method: "DELETE" })
       .then((res) => res.json())
       .then((data) => {
         if (data.ok) {

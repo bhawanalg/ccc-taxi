@@ -27,7 +27,7 @@ export default function CCCStatusDetails({ onBack }) {
   }, [statusFilter, branchFilter, searchQuery]);
 
   const loadHistory = () => {
-    fetch("http://localhost:5000/api/ccc")
+    fetch("http://localhost:5001/api/ccc")
       .then((res) => res.json())
       .then((data) => {
         setHistory(data);
@@ -112,7 +112,7 @@ export default function CCCStatusDetails({ onBack }) {
       return;
     }
 
-    fetch("http://localhost:5000/api/ccc")
+    fetch("http://localhost:5001/api/ccc")
       .then((res) => res.json())
       .then((data) => {
         if (data.length === 0) return;
@@ -124,7 +124,7 @@ export default function CCCStatusDetails({ onBack }) {
           ),
         };
 
-        fetch("http://localhost:5000/api/ccc", {
+        fetch("http://localhost:5001/api/ccc", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ branchEntries: updatedEntries, branchMeta: latestRecord.branchMeta || {} }),
