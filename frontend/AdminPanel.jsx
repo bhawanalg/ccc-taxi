@@ -59,7 +59,7 @@ export default function AdminPanel({ branchOptions, onBack, onLogout }) {
   };
 
   const loadHistory = () => {
-    fetch("http://localhost:5000/api/ccc")
+    fetch("http://localhost:5001/api/ccc")
       .then((res) => res.json())
       .then((data) => {
         setHistory(data);

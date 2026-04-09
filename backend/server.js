@@ -15,6 +15,7 @@ app.use((req, res, next) => {
 });
 
 mongoose.connect("mongodb://127.0.0.1:27017/cccDB");
+// mongoose.connect("mongodb://admin:TheGreatestInternThatEverLived@10.221.41.214:27017/cccDB?authSource=admin");
 
 const CCC = mongoose.model("CCC", new mongoose.Schema({
   branchEntries: Object,
